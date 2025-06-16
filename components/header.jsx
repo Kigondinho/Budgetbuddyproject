@@ -1,0 +1,60 @@
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from './ui/button'
+import { LayoutDashboard, PenBox } from 'lucide-react'
+const Header = () => {
+  return (
+    <div className='fixed top-0 w-full bg-white backdrop-blur-md z-50 border-b'>
+        <nav className='container mx-auto px-4y-4 flex iterms-center justify-between'>
+            <Link href="/">
+            <Image src={"/Logo.png"}
+            alt='Budgetbuddy logo'
+            height={60}
+            width={200}
+            className='h-12 w-auto object-contain'/>
+            </Link>
+           <div className='flex items-center space-x-4'>
+              <SignedIn>
+                <Link href={"/dashboard"}
+                 className='text-gray-600 hover:text-blue-600 flex items-center gap-2'>
+                  <Button variant={"outline"}>
+                    <LayoutDashboard size={18} />
+                    <span className='hidden md:inline'>Dashboard</span>
+                  </Button>
+                </Link>
+
+                <Link href={"/transaction/create"}
+                className='text-gray-600 hover:text-blue-600 flex items-center gap-2'>
+                  <Button variant={"outline"} className="flex items-center gap-2">
+                    <PenBox size={18} />
+                    <span className='md:inline'>Add Transaction</span>
+                  </Button>
+                </Link>
+              </SignedIn>
+              <SignedOut>
+               <SignInButton forceRedirectUrl='dashboard'> 
+                <Button variant="outline">Login</Button>
+               </SignInButton>
+              </SignedOut>
+              <SignedIn>
+               <UserButton apppearance={{
+                elements: {
+                  avatarBox: 'h-10 w-10',
+                }
+               }}/>
+              </SignedIn> 
+            </div>
+         </nav>
+    </div>
+  )
+}
+
+export default Header
