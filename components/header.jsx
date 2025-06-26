@@ -40,7 +40,7 @@ const Header = () => {
                 </Link>
               </SignedIn>
               <SignedOut>
-               <SignInButton forceRedirectUrl='dashboard'> 
+               <SignInButton forceRedirectUrl='sign-in'>
                 <Button variant="outline">Login</Button>
                </SignInButton>
               </SignedOut>

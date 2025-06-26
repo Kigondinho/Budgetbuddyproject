@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card'
-import CreateAccountDrawer from '@/components/ui/create-account-drawer'
+import CreateAccountDrawer from '@/components/create-account-drawer'
 import { Plus } from 'lucide-react'
 import React from 'react'
 
